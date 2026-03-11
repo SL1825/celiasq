@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" style="--wcm-color-fg-1: rgb(20,20,20); --wcm-color-fg-2: rgb(121,134,134); --wcm-color-fg-3: rgb(158,169,169); --wcm-color-bg-1: rgb(255,255,255); --wcm-color-bg-2: rgb(241,243,243); --wcm-color-bg-3: rgb(228,231,231); --wcm-color-overlay: rgba(0,0,0,0.1); --wcm-accent-color: #3396FF; --wcm-accent-fill-color: #FFFFFF; --wcm-z-index: 89; --wcm-background-color: #3396FF; --wcm-background-border-radius: 8px; --wcm-container-border-radius: 30px; --wcm-wallet-icon-border-radius: 15px; --wcm-wallet-icon-large-border-radius: 30px; --wcm-wallet-icon-small-border-radius: 7px; --wcm-input-border-radius: 28px; --wcm-button-border-radius: 10px; --wcm-notification-border-radius: 36px; --wcm-secondary-button-border-radius: 28px; --wcm-icon-button-border-radius: 50%; --wcm-button-hover-highlight-border-radius: 10px; --wcm-text-big-bold-size: 20px; --wcm-text-big-bold-weight: 600; --wcm-text-big-bold-line-height: 24px; --wcm-text-big-bold-letter-spacing: -0.03em; --wcm-text-big-bold-text-transform: none; --wcm-text-xsmall-bold-size: 10px; --wcm-text-xsmall-bold-weight: 700; --wcm-text-xsmall-bold-line-height: 12px; --wcm-text-xsmall-bold-letter-spacing: 0.02em; --wcm-text-xsmall-bold-text-transform: uppercase; --wcm-text-xsmall-regular-size: 12px; --wcm-text-xsmall-regular-weight: 600; --wcm-text-xsmall-regular-line-height: 14px; --wcm-text-xsmall-regular-letter-spacing: -0.03em; --wcm-text-xsmall-regular-text-transform: none; --wcm-text-small-thin-size: 14px; --wcm-text-small-thin-weight: 500; --wcm-text-small-thin-line-height: 16px; --wcm-text-small-thin-letter-spacing: -0.03em; --wcm-text-small-thin-text-transform: none; --wcm-text-small-regular-size: 14px; --wcm-text-small-regular-weight: 600; --wcm-text-small-regular-line-height: 16px; --wcm-text-small-regular-letter-spacing: -0.03em; --wcm-text-small-regular-text-transform: none; --wcm-text-medium-regular-size: 16px; --wcm-text-medium-regular-weight: 600; --wcm-text-medium-regular-line-height: 20px; --wcm-text-medium-regular-letter-spacing: -0.03em; --wcm-text-medium-regular-text-transform: none; --wcm-font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', sans-serif; --wcm-font-feature-settings: 'tnum' on, 'lnum' on, 'case' on; --wcm-success-color: rgb(38,181,98); --wcm-error-color: rgb(242, 90, 103); --wcm-overlay-background-color: rgba(0, 0, 0, 0.3); --wcm-overlay-backdrop-filter: none;" data-scrapbook-source="https://link3.to/celia" data-scrapbook-create="20260311102326920" data-scrapbook-adoptedstylesheet-0="*, ::after, ::before { margin: 0px; padding: 0px; box-sizing: border-box; font-style: normal; text-rendering: optimizespeed; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; backface-visibility: hidden; }
+
+button { cursor: pointer; display: flex; justify-content: center; align-items: center; position: relative; border: none; background-color: transparent; transition: 0.2s; }
+
+@media (hover: hover) and (pointer: fine) {
+  button:active { transition: 0.1s; transform: scale(0.93); }
+}
+
+button::after { content: &quot;&quot;; position: absolute; inset: 0px; transition: background-color, 0.2s; }
+
+button:disabled { cursor: not-allowed; }
+
+button svg, button wcm-text { position: relative; z-index: 1; }
+
+input { border: none; outline: 0px; appearance: none; }
+
+img { display: block; }
+
+::selection { color: var(--wcm-accent-fill-color); background: var(--wcm-accent-color); }" data-scrapbook-adoptedstylesheet-1=":host { all: initial; }
+
+.wcm-overlay { inset: 0px; position: fixed; z-index: var(--wcm-z-index); overflow: hidden; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; background-color: var(--wcm-overlay-background-color); backdrop-filter: var(--wcm-overlay-backdrop-filter); }
+
+@media (max-height: 720px) and (orientation: landscape) {
+  .wcm-overlay { overflow: scroll; align-items: flex-start; padding: 20px 0px; }
+}
+
+.wcm-active { pointer-events: auto; }
+
+.wcm-container { position: relative; max-width: 360px; width: 100%; outline: 0px; border-radius: var(--wcm-background-border-radius) var(--wcm-background-border-radius) var(--wcm-container-border-radius) var(--wcm-container-border-radius); border: 1px solid var(--wcm-color-overlay); overflow: hidden; }
+
+.wcm-card { width: 100%; position: relative; border-radius: var(--wcm-container-border-radius); overflow: hidden; box-shadow: 0 6px 14px -6px rgba(10,16,31,.12),0 10px 32px -4px rgba(10,16,31,.1),0 0 0 1px var(--wcm-color-overlay); background-color: var(--wcm-color-bg-1); color: var(--wcm-color-fg-1); }
+
+@media (max-width: 600px) {
+  .wcm-container { max-width: 440px; border-radius: var(--wcm-background-border-radius) var(--wcm-background-border-radius) 0 0; }
+  .wcm-card { border-radius: var(--wcm-container-border-radius) var(--wcm-container-border-radius) 0 0; }
+  .wcm-overlay { align-items: flex-end; }
+}
+
+@media (max-width: 440px) {
+  .wcm-container { border: 0px; }
+}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>CELIA | Link3</title>
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="Innovating the Future of Web3 for Everyone 🌎 Products: @CeliaAcademy @CeliaBlockchain @CeliaWallet @CeliaPayApp | Help: @Celia_HelpDesk">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="https://link3.to">
+    <meta name="twitter:creator" content="@link3to">
+    <meta property="og:title" content="CELIA | Link3">
+    <meta property="og:description" content="Innovating the Future of Web3 for Everyone 🌎 Products: @CeliaAcademy @CeliaBlockchain @CeliaWallet @CeliaPayApp | Help: @Celia_HelpDesk">
+    <meta property="og:url" content="https://link3.to/celia">
+    <meta property="og:type" content="profile">
+    <meta property="og:image" content="http://picasso.cyber.co/link3-profile?displayName=CELIA&amp;avatar=https://link3-image.cyberconnect.dev/d9800608-0d50-4263-9fe7-29034de212d4/avatarFolder/7921e6eff62d9b7b&amp;profileType=ORGANIZATION&amp;handle=celia&amp;isVerified=true">
+    <meta property="og:image:alt" content="Link3 is the verified all-in-one profile platform designed for Web3 projects, communities, and creators">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="640">
+    <meta property="og:site_name" content="Link3">
+    <link rel="canonical" href="https://link3.to/celia">
+    <meta name="next-head-count" content="19">
+    <link rel="stylesheet" href="4bb60f118d02124c.css" data-n-g="">
+    <link rel="stylesheet" href="5978fd4acee12bb7.css" data-n-p="">
+    <noscript data-n-css=""></noscript>
+    <style type="text/css">
+      .rfm-marquee-container {
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        width: var(--width);
+        transform: var(--transform);
+      }
+
+      .rfm-marquee-container:hover div {
+        animation-play-state: var(--pause-on-hover);
+      }
+
+      .rfm-marquee-container:active div {
+        animation-play-state: var(--pause-on-click);
+      }
+
+      .rfm-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .rfm-overlay::before,
+      .rfm-overlay::after {
+        background: linear-gradient(to right, var(--gradient-color), rgba(255, 255, 255, 0));
+        content: "";
+        height: 100%;
+        position: absolute;
+        width: var(--gradient-width);
+        z-index: 2;
+        pointer-events: none;
+        touch-action: none;
+      }
+
+      .rfm-overlay::after {
+        right: 0;
+        top: 0;
+        transform: rotateZ(180deg);
+      }
+
+      .rfm-overlay::before {
+        left: 0;
+        top: 0;
+      }
+
+      .rfm-marquee {
+        flex: 0 0 auto;
+        min-width: var(--min-width);
+        z-index: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        animation: scroll var(--duration) linear var(--delay) var(--iteration-count);
+        animation-play-state: var(--play);
+        animation-delay: var(--delay);
+        animation-direction: var(--direction);
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0%);
+        }
+
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      .rfm-initial-child-container {
+        flex: 0 0 auto;
+        display: flex;
+        min-width: auto;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .rfm-child {
+        transform: var(--transform);
+      }
+    </style>
+    <link rel="shortcut icon" href="favicon.ico">
+    <script data-scrapbook-elem="custom-elements-loader">
+      (function(names) {
+        if (!customElements) {
+          return;
+        }
+        for (const name of names) {
+          customElements.define(name, class CustomElement extends HTMLElement {});
+        }
+      })(["next-route-announcer", "wcm-explorer-context", "wcm-theme-context", "wcm-modal"])
+    </script>
+  </head>
+  <body class="__variable_a4bae9 __variable_f367f3 __variable_07d15b __variable_472caf __variable_9a4aa5 __variable_5899e0 __variable_42b1e4 font-sans antialiased">
+    <div id="__next">
+      <div data-rk="">
+        <style>
+          [data-rk] {
+            --rk-blurs-modalOverlay: blur(0px);
+            --rk-fonts-body: SFRounded, ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --rk-radii-actionButton: 9999px;
+            --rk-radii-connectButton: 12px;
+            --rk-radii-menuButton: 12px;
+            --rk-radii-modal: 24px;
+            --rk-radii-modalMobile: 28px;
+            --rk-colors-accentColor: #0E76FD;
+            --rk-colors-accentColorForeground: #FFF;
+            --rk-colors-actionButtonBorder: rgba(0, 0, 0, 0.04);
+            --rk-colors-actionButtonBorderMobile: rgba(0, 0, 0, 0.06);
+            --rk-colors-actionButtonSecondaryBackground: rgba(0, 0, 0, 0.06);
+            --rk-colors-closeButton: rgba(60, 66, 66, 0.8);
+            --rk-colors-closeButtonBackground: rgba(0, 0, 0, 0.06);
+            --rk-colors-connectButtonBackground: #FFF;
+            --rk-colors-connectButtonBackgroundError: #FF494A;
+            --rk-colors-connectButtonInnerBackground: linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06));
+            --rk-colors-connectButtonText: #25292E;
+            --rk-colors-connectButtonTextError: #FFF;
+            --rk-colors-connectionIndicator: #30E000;
+            --rk-colors-downloadBottomCardBackground: linear-gradient(126deg, rgba(255, 255, 255, 0) 9.49%, rgba(171, 171, 171, 0.04) 71.04%), #FFFFFF;
+            --rk-colors-downloadTopCardBackground: linear-gradient(126deg, rgba(171, 171, 171, 0.2) 9.49%, rgba(255, 255, 255, 0) 71.04%), #FFFFFF;
+            --rk-colors-error: #FF494A;
+            --rk-colors-generalBorder: rgba(0, 0, 0, 0.06);
+            --rk-colors-generalBorderDim: rgba(0, 0, 0, 0.03);
+            --rk-colors-menuItemBackground: rgba(60, 66, 66, 0.1);
+            --rk-colors-modalBackdrop: rgba(0, 0, 0, 0.3);
+            --rk-colors-modalBackground: #FFF;
+            --rk-colors-modalBorder: transparent;
+            --rk-colors-modalText: #25292E;
+            --rk-colors-modalTextDim: rgba(60, 66, 66, 0.3);
+            --rk-colors-modalTextSecondary: rgba(60, 66, 66, 0.6);
+            --rk-colors-profileAction: #FFF;
+            --rk-colors-profileActionHover: rgba(255, 255, 255, 0.5);
+            --rk-colors-profileForeground: rgba(60, 66, 66, 0.06);
+            --rk-colors-selectedOptionBorder: rgba(60, 66, 66, 0.1);
+            --rk-colors-standby: #FFD641;
+            --rk-shadows-connectButton: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            --rk-shadows-dialog: 0px 8px 32px rgba(0, 0, 0, 0.32);
+            --rk-shadows-profileDetailsAction: 0px 2px 6px rgba(37, 41, 46, 0.04);
+            --rk-shadows-selectedOption: 0px 2px 6px rgba(0, 0, 0, 0.24);
+            --rk-shadows-selectedWallet: 0px 2px 6px rgba(0, 0, 0, 0.12);
+            --rk-shadows-walletLogo: 0px 2px 16px rgba(0, 0, 0, 0.16);
+          }
+        </style>
+        <div style="--toastify-color-progress-info:#52525B;--toastify-color-progress-success:#52C41A;--toastify-color-progress-warning:#FAAD14;--toastify-color-progress-error:#E11D48">
+          <div class="Toastify"></div>
+        </div>
+        <main>
+          <div style="font-family:var(--font-urbanist);--block-shadow-color:#18181B;--block-bg:#FBFBFB;--font-main-color:#18181B" class="enable-bg-color-control">
+            <div class="flex items-center w-full min-h-screen pb-10 flex-col bg-bg-100 relative">
+              <div class="items-center fixed w-full z-20 top-0 left-0 h-[60px] sm:h-[72px] duration-300 shadow-card-rest sm:shadow-card-normal flex" style="background: transparent; box-shadow: none;">
+                <div class="flex items-center max-w-[760px] w-full mx-auto justify-between duration-300 px-4 sm:px-0">
+                  <div class="flex items-center invisible gap-2">
+                    <div class="relative shrink-0 p-0.5 shadow-card-rest always-rounded" style="font-size:40px;width:40px;height:40px;border-radius:22.5%">
+                      <img class="bg-white overflow-hidden w-full h-full object-cover always-rounded" style="border-radius:20%" src="7921e6eff62d9b7b.jpg">
+                    </div>
+                    <p class="text-[18px] leading-[26px] font-semibold text-text-base">CELIA</p>
+                  </div>
+                  <div class="">
+                    <a href="./wallet/index.html"><button class="flex items-center justify-center duration-300 bg-[#27272A] text-text-contained hover:bg-[#3F3F46] shadow-containedButton h-[32px] px-2.5 rounded-sm text-[13px] leading-[20px] font-semibold py-1.5">
+                      <i class="ri-loader-4-line shrink-0 text-text-contained text-[16px] h-[1em] animate-spin" style="line-height:1;width:0em;margin-right:0em;opacity:0;animation-play-state:paused;overflow:hidden;transition:all .2s ease"></i>Connect Wallet </button></a>
+                  </div>
+                </div>
+              </div>
+              <div class="h-full absolute top-0 left-0 w-full bg-bg-100" style="background:#FAFAFA">
+                <div class="w-full h-[46px] sm:h-[190px] relative overflow-hidden">
+                  <img class="object-cover w-full h-full" src="f4c86dd97f53a0a3.jpg" style="visibility: visible;">
+                </div>
+              </div>
+              <div class="flex w-full px-4 flex-col gap-4 sm:gap-6 mx-auto pb-6 sm:px-0 sm:w-[760px] relative mt-4 sm:mt-[84px]">
+                <div class="flex flex-col p-3 sm:p-4 bg-white shadow-card-rest rounded-md gap-3 sm:gap-4 theme-bgcolor-controled theme-shadow-controled">
+                  <div class="relative shrink-0 p-0.5 shadow-card-rest always-rounded" style="font-size:76px;width:76px;height:76px;border-radius:22.5%">
+                    <img class="bg-white overflow-hidden w-full h-full object-cover always-rounded" style="border-radius:20%" src="7921e6eff62d9b7b.jpg">
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <div class="flex items-center gap-1 sm:gap-2">
+                      <p class="text-[24px] leading-[32px] font-bold text-text-base">CELIA</p>
+                      <img src="verified.webp" alt="verified" class="sm:w-6 sm:h-6 w-[18px] h-[18px] cursor-pointer" data-state="closed">
+                    </div>
+                    <div class="break-words whitespace-pre-line">
+                      <div class="w-1 h-[3lh] hidden sm:block">
+                        <br>
+                      </div>
+                      <p class="text-[16px] leading-[24px] font-normal float-end cursor-pointer text-[#1677FF] hidden">Read More</p>
+                      <p class="text-[16px] leading-[24px] font-normal text-text-base w-full sm:mt-[-3lh]">$CELIA Token Mainnet Migration is now Live! &nbsp;
+                        
+                        You can claim your token anytime of the month.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <div class="flex items-center border-[1.5px] text-[12px] font-bold gap-[2px] px-1.5 h-[26px] rounded-sm" style="color:#52525B;border-color:#E4E4E7;background-color:#F4F4F5">Total Allocation- 112,511,348 CELIA</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex-col flex shadow-card-rest sm:hover:shadow-flyout p-3 sm:p-4 rounded-md duration-300 theme-bgcolor-controled theme-shadow-controled theme-shadow-controled-hover bg-white">
+                    <div class="flex items-center w-full justify-between cursor-pointer">
+                      <div class="relative shrink-0 p-0.5 shadow-card-rest always-rounded" style="font-size:40px;width:40px;height:40px;border-radius:22.5%">
+                        <img class="bg-white overflow-hidden w-full h-full object-cover always-rounded" style="border-radius:20%" src="2792889de677ddb1.jpg">
+                      </div><a href="./wallet/index.html"><button>
+                      <p class="text-[18px] leading-[26px] whitespace-nowrap overflow-hidden text-ellipsis font-semibold text-text-base px-2">COMPLETE MIGRATION</p></button></a>
+                      <div class="flex items-center justify-center p-1 sm:p-2">
+                        <i class="ri-arrow-right-up-line text-text-subtitle shrink-0 sm:text-2xl text-[20px]" style="line-height:1"></i>
+                      </div>
+                    </div>
+                    <div class="overflow-hidden transition-all duration-300 h-0" style="height:0">
+                      <div class="w-full"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 mt-auto pb-6 pt-12 relative">
+                <p class="text-[13px] leading-[20px] font-normal text-text-fg-muted">Powered by</p>
+                <a href="https://link3.to/">
+                  <img src="logo.svg" class="sm:h-[16px] h-[14px]">
+                </a>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <div style="height: 0px; width: 0px; overflow: hidden;">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <clipPath id="avatar-hex-path" clipPathUnits="objectBoundingBox">
+          <path transform="scale(0.012195121951219513, 0.012195121951219513)" d="M17.6926 8.01044C19.1201 5.52935 21.7644 4 24.6268 4L57.3732 4C60.2356 4 62.8799 5.52936 64.3074 8.01045L80.7046 36.5105C82.1257 38.9803 82.1257 42.0197 80.7046 44.4896L64.3074 72.9896C62.8799 75.4706 60.2356 77 57.3732 77H24.6268C21.7644 77 19.1201 75.4706 17.6926 72.9896L1.29536 44.4896C-0.125675 42.0197 -0.125675 38.9803 1.29536 36.5104L17.6926 8.01044Z" fill="none"></path>
+        </clipPath>
+      </svg>
+    </div>
+    <next-route-announcer>
+      <p aria-live="assertive" id="__next-route-announcer__" role="alert" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; top: 0px; width: 1px; white-space: nowrap; overflow-wrap: normal;"></p>
+    </next-route-announcer>
+    <wcm-modal data-scrapbook-adoptedstylesheets="0,1" data-scrapbook-shadowdom="&lt;!----&gt;&lt;wcm-explorer-context data-scrapbook-shadowdom=&quot;&amp;lt;!----&amp;gt;&quot;&gt;&lt;/wcm-explorer-context&gt;&lt;wcm-theme-context data-scrapbook-shadowdom=&quot;&amp;lt;!----&amp;gt;&quot;&gt;&lt;/wcm-theme-context&gt;&lt;div id=&quot;wcm-modal&quot; role=&quot;alertdialog&quot; aria-modal=&quot;true&quot; class=&quot; wcm-overlay &quot;&gt;&lt;div class=&quot;wcm-container&quot; tabindex=&quot;0&quot;&gt;&lt;!--?lit$420557814$--&gt;&lt;/div&gt;&lt;/div&gt;"></wcm-modal>
+    <script data-scrapbook-elem="basic-loader">
+      (function() {
+        var k1 = "data-scrapbook-shadowdom",
+          k2 = "data-scrapbook-canvas",
+          k3 = "data-scrapbook-input-indeterminate",
+          k4 = "data-scrapbook-input-checked",
+          k5 = "data-scrapbook-option-selected",
+          k6 = "data-scrapbook-input-value",
+          k7 = "data-scrapbook-textarea-value",
+          k8 = "data-scrapbook-adoptedstylesheets",
+          k9 = /^data-scrapbook-adoptedstylesheet-(\d+)$/,
+          k10 = "data-scrapbook-shadowdom-mode",
+          k11 = "data-scrapbook-shadowdom-clonable",
+          k12 = "data-scrapbook-shadowdom-delegates-focus",
+          k13 = "data-scrapbook-shadowdom-serializable",
+          k14 = "data-scrapbook-shadowdom-slot-assignment",
+          k15 = "data-scrapbook-slot-assigned",
+          k16 = "data-scrapbook-slot-index",
+          k17 = /^scrapbook-slot-index=(\d+)$/,
+          k18 = '/scrapbook-slot-index',
+          d = document,
+          r = d.documentElement,
+          $s = !!r.attachShadow,
+          $as = !!d.adoptedStyleSheets,
+          $c = !!window.HTMLCanvasElement,
+          $sa = !!d.createElement('slot').assign,
+          sle = [],
+          sls = [],
+          slt = function(r) {
+            if ($sa) {
+              var E = r.childNodes,
+                i, e, s, m;
+              for (i = 0; i < E.length; i++) {
+                e = E[i];
+                if (e.nodeType === 8) {
+                  s = e.nodeValue;
+                  if (m = s.match(k17)) {
+                    s = e.nextSibling;
+                    if (s.nodeType === 3) {
+                      sls[m[1]] = s;
+                    }
+                    r.removeChild(e);
+                    i--;
+                  } else if (s === k18) {
+                    r.removeChild(e);
+                    i--;
+                  }
+                }
+              }
+            }
+          },
+          sl = function() {
+            var i = sle.length,
+              j, d, e;
+            while (i--) {
+              d = sle[i];
+              e = d.elem;
+              d = d.value.split(',');
+              j = d.length;
+              while (j--) {
+                d[j] = sls[parseInt(d[j], 10)];
+              }
+              try {
+                try {
+                  e.assign.apply(e, d);
+                } catch (ex) {
+                  if (ex.message.includes('must have a callable @@iterator')) {
+                    e.assign(d);
+                  } else {
+                    throw ex;
+                  }
+                }
+              } catch (ex) {
+                console.error(ex);
+              }
+            }
+          },
+          asl = (function(r) {
+            var l = [],
+              E, i, e, m, c, j;
+            if ($as) {
+              E = r.attributes;
+              i = E.length;
+              while (i--) {
+                e = E[i];
+                if (!(m = e.nodeName.match(k9))) {
+                  continue;
+                }
+                c = l[m[1]] = new CSSStyleSheet();
+                r.removeAttribute(m[0]);
+                m = e.nodeValue.split('\n\n');
+                j = m.length;
+                while (j--) {
+                  try {
+                    m[j] && c.insertRule(m[j]);
+                  } catch (ex) {
+                    console.error(ex);
+                  }
+                }
+              }
+            }
+            return l;
+          })(r),
+          as = function(d, e) {
+            var l, i, I;
+            if ($as && (l = e.getAttribute(k8)) !== null) {
+              l = l.split(',').map(i => asl[i]);
+              d.adoptedStyleSheets = d.adoptedStyleSheets.concat(l);
+              e.removeAttribute(k8);
+            }
+          },
+          fn = function(r) {
+            var E = r.querySelectorAll ? r.querySelectorAll("*") : r.getElementsByTagName("*"),
+              i = E.length,
+              e, d, s, m;
+            while (i--) {
+              e = E[i];
+              s = e.shadowRoot;
+              if ($s && (d = e.getAttribute(k1))) {
+                if (!s) {
+                  try {
+                    s = e.attachShadow({
+                      mode: (m = e.getAttribute(k10)) !== null ? m : 'open',
+                      clonable: e.hasAttribute(k11),
+                      delegatesFocus: e.hasAttribute(k12),
+                      serializable: e.hasAttribute(k13),
+                      slotAssignment: (m = e.getAttribute(k14)) !== null ? m : void 0,
+                    });
+                    s.innerHTML = d;
+                  } catch (ex) {
+                    console.error(ex);
+                  }
+                }
+                e.removeAttribute(k1);
+                e.removeAttribute(k10);
+                e.removeAttribute(k11);
+                e.removeAttribute(k12);
+                e.removeAttribute(k13);
+                e.removeAttribute(k14);
+              }
+              if ($c && (d = e.getAttribute(k2)) !== null) {
+                (function() {
+                  var c = e,
+                    g = new Image();
+                  g.onload = function() {
+                    c.getContext('2d').drawImage(g, 0, 0);
+                  };
+                  g.src = d;
+                })();
+                e.removeAttribute(k2);
+              }
+              if ((d = e.getAttribute(k3)) !== null) {
+                e.indeterminate = true;
+                e.removeAttribute(k3);
+              }
+              if ((d = e.getAttribute(k4)) !== null) {
+                e.checked = d === 'true';
+                e.removeAttribute(k4);
+              }
+              if ((d = e.getAttribute(k5)) !== null) {
+                e.selected = d === 'true';
+                e.removeAttribute(k5);
+              }
+              if ((d = e.getAttribute(k6)) !== null) {
+                e.value = d;
+                e.removeAttribute(k6);
+              }
+              if ((d = e.getAttribute(k7)) !== null) {
+                e.value = d;
+                e.removeAttribute(k7);
+              }
+              if ($sa && (d = e.getAttribute(k15)) !== null) {
+                sle.push({
+                  elem: e,
+                  value: d
+                });
+                e.removeAttribute(k15);
+              }
+              if ($sa && (d = e.getAttribute(k16)) !== null) {
+                sls[d] = e;
+                e.removeAttribute(k16);
+              }
+              if (s) {
+                slt(e);
+                as(s, e);
+                fn(s);
+              }
+            }
+          };
+        as(d, r);
+        fn(d);
+        sl();
+      })()
+    </script>
+  </body>
+</html>
